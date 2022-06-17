@@ -1,1 +1,1 @@
-# gui-timer
+# GUI Timer
