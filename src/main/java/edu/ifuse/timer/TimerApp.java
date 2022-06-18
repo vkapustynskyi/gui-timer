@@ -2,8 +2,7 @@ package edu.ifuse.timer;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
 
@@ -18,6 +17,9 @@ public class TimerApp implements ActionListener {
 
     public TimerApp() {
         frame = new JFrame("GUI Timer");
+        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        manager.addKeyEventDispatcher(new MyDispatcher());
+
         timerDisplayLabel = new JLabel("00:00:00");
         timerDisplayLabel.setHorizontalAlignment(SwingConstants.CENTER);
         timerDisplayLabel.setFont(new Font("Digital", Font.PLAIN, 100));
@@ -31,7 +33,6 @@ public class TimerApp implements ActionListener {
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         panel.add(timerDisplayLabel);
         panel.add(buttonsLabel);
-
 
         frame.add(panel, BorderLayout.CENTER);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,5 +64,16 @@ public class TimerApp implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         TIME = LocalTime.parse(TIME).plus(1000, ChronoUnit.MILLIS).toString();
         timerDisplayLabel.setText(TIME);
+    }
+
+    private class MyDispatcher implements KeyEventDispatcher {
+        @Override
+        public boolean dispatchKeyEvent(KeyEvent e) {
+            if (e.getID() == KeyEvent.KEY_PRESSED && e.isAltDown() && e.getKeyChar() == 'u') {
+                System.out.println("Pressed " + e.getKeyChar());
+                frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+            }
+            return false;
+        }
     }
 }
