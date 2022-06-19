@@ -19,11 +19,8 @@ public class TimerApp {
     public static Logger LOGGER;
     private static String TIME = "00:00:00";
     private static Timer TIMER;
-    private static Timer DEFAULT_LOGGING_TIMER;
     private final JFrame frame;
-    private final JPanel panel;
     private final JLabel timerDisplayLabel;
-    private final JLabel buttonsLabel;
     private final FileOutputStream journalFile = new FileOutputStream("log.txt");
 
     public TimerApp() throws FileNotFoundException {
@@ -40,12 +37,12 @@ public class TimerApp {
         timerDisplayLabel.setFont(new Font("Digital", Font.PLAIN, 100));
 
         LOGGER.info("Creating buttons");
-        buttonsLabel = new JLabel();
+        JLabel buttonsLabel = new JLabel();
         buttonsLabel.setLayout(new GridLayout(1, 2));
         buttonsLabel.add(SwitchStatesButtonComponent.createToggleButton());
         buttonsLabel.add(ClearButtonComponent.createClearButton(this));
 
-        panel = new JPanel(new GridLayout(0, 1));
+        JPanel panel = new JPanel(new GridLayout(0, 1));
         panel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
         panel.add(timerDisplayLabel);
         panel.add(buttonsLabel);
@@ -60,8 +57,8 @@ public class TimerApp {
 
         LOGGER.info("Configuring timer");
         TIMER = new Timer(1000, this::iterateTimer);
-        DEFAULT_LOGGING_TIMER = new Timer(10000, this::defaultLogging);
-        DEFAULT_LOGGING_TIMER.start();
+        Timer loggingTimer = new Timer(10000, this::defaultLogging);
+        loggingTimer.start();
         JOptionPane.showMessageDialog(null, "Welcome! Use the timer!", "GUI timer", JOptionPane.INFORMATION_MESSAGE);
     }
 
