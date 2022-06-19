@@ -1,9 +1,7 @@
 package edu.ifuse.timer.gui;
 
 import edu.ifuse.timer.service.MyKeyEventDispatcher;
-import edu.ifuse.timer.service.MyLoggerFactory;
 import edu.ifuse.timer.service.MyWindowAdapter;
-import edu.ifuse.timer.service.TimerService;
 
 import javax.swing.*;
 import java.awt.*;

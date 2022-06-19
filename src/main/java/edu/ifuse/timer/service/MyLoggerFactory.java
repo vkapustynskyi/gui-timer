@@ -1,7 +1,6 @@
 package edu.ifuse.timer.service;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.FileHandler;

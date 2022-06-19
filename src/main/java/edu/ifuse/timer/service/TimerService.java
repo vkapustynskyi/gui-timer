@@ -1,6 +1,5 @@
 package edu.ifuse.timer.service;
 
-import edu.ifuse.timer.gui.TimerButtonLabel;
 import edu.ifuse.timer.gui.TimerDisplay;
 
 import javax.swing.*;
