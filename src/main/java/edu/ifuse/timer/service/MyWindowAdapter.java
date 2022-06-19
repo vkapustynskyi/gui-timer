@@ -1,4 +1,4 @@
-package edu.ifuse.timer;
+package edu.ifuse.timer.service;
 
 import javax.swing.*;
 import java.awt.event.WindowAdapter;

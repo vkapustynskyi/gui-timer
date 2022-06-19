@@ -1,4 +1,6 @@
-package edu.ifuse.timer;
+package edu.ifuse.timer.gui;
+
+import edu.ifuse.timer.service.TimerService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,19 +8,19 @@ import java.awt.*;
 public class SwitchStatesButtonComponent {
 
     public static JToggleButton createToggleButton() {
-        JToggleButton toggleButton = new JToggleButton("Start");
-        toggleButton.setFont(new Font("Digital", Font.PLAIN, 20));
-        toggleButton.addActionListener((e -> toggleAction(toggleButton)));
-        return toggleButton;
+        JToggleButton button = new JToggleButton("Start");
+        button.setFont(new Font("Digital", Font.PLAIN, 20));
+        button.addActionListener((e -> toggleAction(button)));
+        return button;
     }
 
     private static void toggleAction(JToggleButton toggleButton) {
         if (toggleButton.isSelected()) {
             toggleButton.setText("Stop");
-            TimerApp.start();
+            TimerService.start();
         } else {
             toggleButton.setText("Start");
-            TimerApp.stop();
+            TimerService.stop();
         }
     }
 
