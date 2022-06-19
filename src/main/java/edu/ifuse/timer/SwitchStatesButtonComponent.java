@@ -5,7 +5,7 @@ import javax.swing.*;
 public class SwitchStatesButtonComponent {
 
     public static JToggleButton createToggleButton() {
-        JToggleButton toggleButton = new JToggleButton("Start timer");
+        JToggleButton toggleButton = new JToggleButton("Start");
         toggleButton.addActionListener((e -> toggleAction(toggleButton)));
         return toggleButton;
     }
