@@ -28,6 +28,7 @@ public class TimerApp {
         LOGGER.info("Setting up GUI timer");
         frame = new JFrame("GUI Timer");
         frame.addWindowListener(new MyWindowAdapter(frame));
+        frame.setIconImage(new ImageIcon("src/main/resources/timer-ico.png").getImage());
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         manager.addKeyEventDispatcher(new MyKeyEventDispatcher());
 
